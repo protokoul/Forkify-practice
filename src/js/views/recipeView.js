@@ -7,6 +7,10 @@ class RecipeView extends View {
   _errorMessage = 'We could not fetch the recipe. Please try a different one.';
   _message = '';
 
+  addHandlerRender(handler) {
+    ['hashchange', 'load'].forEach(e => window.addEventListener(e, handler));
+  }
+
   _generateMarkup() {
     return `<figure class="recipe__fig">
     <img src="${this._data.image}" alt="${
@@ -103,10 +107,6 @@ class RecipeView extends View {
         ${ing.description}
       </div>
     </li>`;
-  }
-
-  addHandlerRender(handler) {
-    ['hashchange', 'load'].forEach(e => window.addEventListener(e, handler));
   }
 }
 
